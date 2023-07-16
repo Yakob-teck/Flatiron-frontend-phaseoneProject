@@ -9,7 +9,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  height: 80px;
   width: 100%;
   background: rgb(3, 63, 22);
   padding: 0 20px;
@@ -21,8 +21,9 @@ body {
 }
 
 .heading ul li {
-  margin: 0 10px;
+  margin: 0 50px;
   text-align:center;
+  padding: 0;
 }
 
 .heading ul li a {
@@ -57,20 +58,25 @@ body {
   transition-duration: 1s;
   background-color: rgb(243, 168, 7);
 }
-.logo{
-  margin-top: 0 20px;
+
+
+.logo img {
+  position: absolute;
+    top: 60px;
+    left: 0px;
+    width: 280px;
+    height: 30px;
 }
 .logo a {
-  position: relative;
-    top: 72px;
-    left: 200px;
-    text-align: left;
-    color: rgb(17, 17, 18);
-    font-size: 20px;
-    font-size: xx-large; 
+  position: absolute;
+  top: 72px;
+  left: 300px;
+  color: rgb(17, 17, 18);
+  font-size: 20px;
+  align-content: center;
+  font-size: xx-large; 
     padding: 0;
 }
-
 .menu-icon {
   display: flex;
   flex-direction: column-reverse;
@@ -78,10 +84,7 @@ body {
   width: 30px;
   height: 20px;
   cursor: pointer;
-  margin-left: 10px;
-  margin-top: -40px;
 }
-
 .bar {
   width: 100%;
   height: 2px;
@@ -91,11 +94,6 @@ body {
 .menu {
   display: none;
 }
-
-.menu.visible {
-  display: block;
-}
-
 .menu ul {
   display: flex;
   list-style: none;
@@ -104,12 +102,12 @@ body {
 }
 
 .menu ul li {
-  margin: 0 10px;
+  margin: 0 20px;
 }
 
 .menu ul li a {
   text-decoration: none;
-  color: white;
+  color: rgb(109, 11, 11);
   font-weight: bold;
   transition-duration: 0.5s;
 }
@@ -154,6 +152,7 @@ header a ion-icon {
 }
 
 .image-section {
+margin-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -162,8 +161,19 @@ header a ion-icon {
 }
 
 .image-section img {
-  max-width: 100%;
+  max-width: 200%;
   max-height: 100%;
+}
+.image-container {
+    display: flex;
+    width: 520px;
+    height: 300px;
+}
+
+.image-container img {
+    width: 300%;
+    height: 100%;
+    margin: 0 10px;
 }
 .img-slider img {
   height: 720px;
@@ -223,11 +233,6 @@ header a ion-icon {
 
 .heading1 {
   opacity: 0;
-}
-
-.search {
-  display: flex;
-  position: relative;
 }
 
 .image-section {
@@ -371,11 +376,15 @@ text-decoration: none;
  .footer3 {
    margin-top:60px;
    margin-bottom: 20px;
-display:flex;
+display:none;
 flex-wrap: wrap;
   justify-content: center;
- 
+ }
+  .footer3.show {
+    display: block;
 }
+ 
+
 
  .footer2 .heading:hover {
   color:rgb(243, 168, 7);
@@ -646,11 +655,9 @@ color: red;
        z-index:34;
   }
 
-   .search a {
-      display:flex;
-      flex-wrap: nowrap;
-      
-  }
+.footer0:hover {
+  color: rgb(243, 168, 7);
+}
 
   
 }
