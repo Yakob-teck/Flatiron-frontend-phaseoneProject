@@ -25,8 +25,9 @@ display: flex;
 }
 
 .heading ul li {
+  position:absolute;
   display:flex;
-  margin: 0 50px;
+  margin: 0 2px;
   text-align: center;
   padding: 0;
 }
@@ -151,11 +152,7 @@ display: flex;
   padding: 5px;
 }
 
-.search ion-icon {
-  color: white;
-  margin-left: 20px;
-  margin-right: 20px;
-}
+
 
 .search a {
   display: flex;
