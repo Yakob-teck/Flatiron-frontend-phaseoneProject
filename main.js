@@ -24,6 +24,17 @@ displayNextImage();
 // Set the interval to change the image every 3 seconds (3000 milliseconds)
 setInterval(displayNextImage, 3000);
 
+// Get the menu icon element
+const menuIcon = document.querySelector('.menu-icon');
+
+// Get the menu element
+const menu = document.querySelector('.menu');
+
+// Add event listener to the menu icon
+menuIcon.addEventListener('click', () => {
+  // Toggle the 'active' class on the menu element
+  menu.classList.toggle('active');
+});
 
 
 

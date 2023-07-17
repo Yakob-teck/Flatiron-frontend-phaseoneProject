@@ -8,134 +8,112 @@ body{
   display:block;
   margin: 8px;
 }
+
+/* Align the "heading" elements horizontally and place them on the top */
 .header {
-  display:block;
+  display:flex;
   justify-content: space-between;
- 
-  height: 80px;
+  align-items: center;
+  position:absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  background: rgb(3, 63, 22);
- 
+  height: 60px;
+  background-color: #f1f1f1;
 }
 
-.heading ul {
-display:block;
-  list-style: none;
+/* Style the logo */
+.logo {
+  margin-left: 80px;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+}
 
+
+.logo a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Style the navigation menu */
+.heading ul {
+  display:flex;
+  list-style:none;
 }
 
 .heading ul li {
-  position:absolute;
-  display:flex;
-  margin: 0 2px;
-  text-align: center;
-  padding: 0;
+  margin-right: 15px;
 }
 
 .heading ul li a {
   text-decoration: none;
-  color: white;
-  font-weight: bold;
-  transition-duration: 0.5s;
+  color: #333;
 }
 
-.heading ul li a:active {
-  color: rgb(109, 237, 35);
+/* Style the search section */
+.search form {
+  display: flex;
+  align-items: center;
 }
 
-.heading ul li a:hover {
-  color: rgb(232, 8, 131);
-  transition-duration: 1s;
+.search input[type="text"] {
+  padding: 5px;
 }
 
-.heading ul li a::before {
-  content: '';
-  height: 2px;
-  width: 0px;
-  position: relative;
-  left: 0;
-  bottom: 0;
-  background-color: rgb(7, 1, 16);
-  transition-duration: 1s;
-}
-
-.heading ul li a:hover::before {
-  width: 100%;
-  transition-duration: 1s;
-  background-color: rgb(243, 168, 7);
-}
-
-
-.logo img {
-  position: absolute;
-  top: 80px;
-  left: 0px;
-  width: 280px;
-  height: 30px;
-}
-
-.logo a {
-  position:absolute;
-  top: 200px;
-  left: 30px;
-  color: rgb(17, 17, 18);
-  font-size: 20px;
-  align-content: center;
-  font-size: xx-large;
-  padding: 0;
-}
-
-.menu-icon {
-  position: absolute;
-  display: block;
-  justify-content: space-between;
-  top: 50px;
-  left: 30px;
-  width: 24px;
-  height: 18px;
+.search input[type="submit"] {
+  padding: 5px 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
   cursor: pointer;
 }
 
-.bar {
-  left: 80px;
+.menu-icon {
+  display:block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.menu-icon .bar {
   width: 100%;
-  height: 2px;
-  background-color: rgb(220, 143, 143);
+  height: 3px;
+  background-color: #000;
+  margin-bottom: 5px;
 }
 
-.menu-icon::before {
-  content: "\2716";
+/* Menu */
+.menu {
+  display: none; /* Initially hide the menu */
 }
 
-.menu-icon.close::before {
-  content: "\2715";
+.menu.active {
+  display: block; /* Show the menu when active class is applied */
 }
 
 .menu ul {
-  display:block;
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 .menu ul li {
-  margin: 0 60px;
+  margin-bottom: 10px;
 }
 
 .menu ul li a {
   text-decoration: none;
-  color: rgb(109, 11, 16);
+  color: #000;
   font-weight: bold;
-  transition-duration: 0.5s;
-}
-
-.menu ul li a:hover {
-  color: rgb(240, 197, 6);
 }
 
 .search {
   position:absolute;
-  margin-top: 125px;
+  margin-top: 110px;
   padding: 10px;
   display: flex;
   align-items: center;
@@ -156,12 +134,7 @@ display:block;
 .search a {
   display: flex;
   align-self: flex-end;
-}
-
-header a ion-icon {
-  position: absolute;
-  right: 2px;
-}
+} 
 
 .image-section {
 margin-top: 100px;
@@ -280,7 +253,7 @@ margin-top: 100px;
 
 .section2 .container .items .name {
   text-align: center;
-  background-color: rgb(240, 197, 6);
+  background-color: rgb(147, 105, 230);
   height: 25px;
   padding-top: 4px;
   color: white;
