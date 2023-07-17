@@ -38,7 +38,7 @@ body{
 
 /* Style the navigation menu */
 .heading ul {
-  display:flex;
+  display:block;
   list-style:none;
 }
 
@@ -69,46 +69,52 @@ body{
   cursor: pointer;
 }
 
+/* Style the menu icon */
 .menu-icon {
-  display:block;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
+  display: block;
+  position: fixed;
+  top: 10px;
+  left: 10px;
   cursor: pointer;
 }
 
-.menu-icon .bar {
-  width: 100%;
+.bar {
+  margin-top: 5px;
+  width: 25px;
   height: 3px;
-  background-color: #000;
+  background-color: #333;
   margin-bottom: 5px;
 }
 
-/* Menu */
+/* Hide the menu initially */
 .menu {
-  display: none; /* Initially hide the menu */
-}
-
-.menu.active {
-  display: block; /* Show the menu when active class is applied */
+  display: none;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: #f1f1f1;
 }
 
 .menu ul {
+  display: flex;
+  justify-content: center;
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 .menu ul li {
-  margin-bottom: 10px;
+  margin: 0 10px;
 }
 
 .menu ul li a {
   text-decoration: none;
-  color: #000;
-  font-weight: bold;
+  color: #333;
+}
+
+.menu ul li a:hover {
+  color: rgb(240, 197, 6);
 }
 
 .search {
@@ -127,6 +133,32 @@ body{
   text-decoration: none;
   border: 1px;
   padding: 5px;
+}
+
+.quote-form {
+  position:absolute;
+  display: none;
+  margin-top: 10px;
+}
+
+.quote-form label {
+  display: block;
+  margin-top: 10px;
+}
+
+.quote-form input,
+.quote-form textarea {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.quote-form input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
 }
 
 

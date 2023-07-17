@@ -36,5 +36,32 @@ menuIcon.addEventListener('click', () => {
   menu.classList.toggle('active');
 });
 
+const quoteButtons = document.querySelectorAll('.quote-button');
 
+quoteButtons.forEach((button) => {
+  button.addEventListener('click', (event) => {
+    const quoteForm = event.target.nextElementSibling;
+    quoteForm.style.display = 'block'; // Show the corresponding form when the button is clicked
 
+    // Add click event listener to the submit button within the quote form
+    const submitButton = quoteForm.querySelector('input[type="submit"]');
+    submitButton.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevent form submission
+
+      // Get form input elements
+      const nameInput = quoteForm.querySelector('.name-input');
+      const telephoneInput = quoteForm.querySelector('#telephone');
+      const messageInput = quoteForm.querySelector('.message-input');
+
+      // Check if any of the required fields are empty
+      if (nameInput.value === '' || telephoneInput.value === '' || messageInput.value === '') {
+        // Display validation message
+        alert('Please fill in all the required fields.');
+      } else {
+        // If all required fields are filled, hide the quote form
+        quoteForm.style.display = 'none';
+        // You can add code here to handle form submission, e.g., send data to the server.
+      }
+    });
+  });
+});
