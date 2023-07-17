@@ -21,6 +21,29 @@ body{
   height: 60px;
   background-color: #f1f1f1;
 }
+/* Add a new CSS rule for the heading navigation */
+nav.heading {
+  display: flex;
+  align-items: center; /* Vertically center the links */
+}
+
+nav.heading ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav.heading ul li {
+  margin-right: 20px;
+}
+
+/* Optional: Add some space between the header elements */
+.logo,
+.heading,
+.search {
+  margin-right: 20px;
+}
 
 /* Style the logo */
 .logo {
@@ -43,7 +66,9 @@ body{
 }
 
 .heading ul li {
+
   margin-right: 15px;
+
 }
 
 .heading ul li a {
