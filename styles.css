@@ -415,16 +415,20 @@ text-decoration: none;
 }
 
 .footer0:hover {
- color:rgb(243, 168, 7);
+ color:rgb(212, 164, 60);
   
 }
-
+.footer2:hover{
+  color:#326ae5
+}
 .footer2 .heading {
   font-weight: 900;
    font-size: 18px;
  
  }
- 
+ .footer2 a{
+  color:aquamarine
+ }
  .footer3 {
    margin-top:60px;
    margin-bottom: 20px;
@@ -435,18 +439,10 @@ flex-wrap: wrap;
   .footer3.show {
     display: block;
 }
- 
-
 
 .footer2 .heading:hover {
   color: rgb(243, 168, 7);
 }
-
-.footer2 .div:hover {
-  transform: scale(1.05);
-  
-}
-
 .footer3 {
   margin-top: 60px;
   margin-bottom: 20px;
@@ -459,7 +455,7 @@ flex-wrap: wrap;
   display: block;
 }
 
-.footer2 div {
+.footer2 section {
   margin: 10px;
 }
 
