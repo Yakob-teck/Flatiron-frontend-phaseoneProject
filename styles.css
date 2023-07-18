@@ -9,7 +9,7 @@ body{
   margin: 8px;
 }
 
-/* Align the "heading" elements horizontally and place them on the top */
+
 .header {
   display:flex;
   justify-content: space-between;
@@ -21,10 +21,9 @@ body{
   height: 60px;
   background-color: #f1f1f1;
 }
-/* Add a new CSS rule for the heading navigation */
 nav.heading {
   display: flex;
-  align-items: center; /* Vertically center the links */
+  align-items: center;
 }
 
 nav.heading ul {
@@ -38,7 +37,7 @@ nav.heading ul li {
   margin-right: 20px;
 }
 
-/* Optional: Add some space between the header elements */
+
 .logo,
 .heading,
 .search {
@@ -163,12 +162,14 @@ nav.heading ul li {
 .quote-form {
   position:absolute;
   display: none;
-  margin-top: 10px;
+  right: -20px;
+  
 }
 
 .quote-form label {
   display: block;
   margin-top: 10px;
+  color: rgb(6, 2, 17);
 }
 
 .quote-form input,
