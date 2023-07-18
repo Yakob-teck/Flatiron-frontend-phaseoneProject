@@ -18,23 +18,13 @@ function displayNextImage() {
   currentIndex = (currentIndex + 1) % images.length;
 }
 
-// Call the function initially to display the first image
+
 displayNextImage();
 
 // Set the interval to change the image every 3 seconds (3000 milliseconds)
 setInterval(displayNextImage, 3000);
 
-// Get the menu icon element
-const menuIcon = document.querySelector('.menu-icon');
 
-// Get the menu element
-const menu = document.querySelector('.menu');
-
-// Add event listener to the menu icon
-menuIcon.addEventListener('click', () => {
-  // Toggle the 'active' class on the menu element
-  menu.classList.toggle('active');
-});
 
 const quoteButtons = document.querySelectorAll('.quote-button');
 
@@ -65,7 +55,6 @@ submitButtons.forEach((button) => {
     const telephoneInput = quoteForm.querySelector('#telephone');
     const messageInput = quoteForm.querySelector('.message-input');
 
-    // Check if any of the required fields are empty
     if (nameInput.value === '' || telephoneInput.value === '' || messageInput.value === '') {
       // Display validation message
       alert('Please fill in all the required fields.');
@@ -76,3 +65,8 @@ submitButtons.forEach((button) => {
     }
   });
 });
+const searchInputFocus = () => {
+  console.log(`focus occurred`)
+}
+const searchItemInput = document.body.querySelector("#input")
+searchItemInput.addEventListener(`focus`,searchInputFocus)

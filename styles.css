@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(118, 118, 236);
+  background-color: rgb(250, 250, 252);
  
   padding: 0;
   box-sizing: border-box;
@@ -19,7 +19,7 @@ body{
   left: 0;
   width: 100%;
   height: 60px;
-  background-color: #f1f1f1;
+  background-color: #0d0d0d;
 }
 nav.heading {
   display: flex;
@@ -55,7 +55,7 @@ nav.heading ul li {
 
 .logo a {
   text-decoration: none;
-  color: #333;
+  color: #d8d5d5;
 }
 
 /* Style the navigation menu */
@@ -72,7 +72,7 @@ nav.heading ul li {
 
 .heading ul li a {
   text-decoration: none;
-  color: #333;
+  color: #d9d4d4;
 }
 
 /* Style the search section */
@@ -96,7 +96,7 @@ nav.heading ul li {
 /* Style the menu icon */
 .menu-icon {
   display: block;
-  position: fixed;
+  position: absolute;
   top: 10px;
   left: 10px;
   cursor: pointer;
@@ -106,7 +106,7 @@ nav.heading ul li {
   margin-top: 5px;
   width: 25px;
   height: 3px;
-  background-color: #333;
+  background-color: #ece5e5;
   margin-bottom: 5px;
 }
 
@@ -117,7 +117,7 @@ nav.heading ul li {
   top: 60px;
   left: 0;
   width: 100%;
-  background-color: #f1f1f1;
+  background-color: #1a1919;
 }
 
 .menu ul {
@@ -163,6 +163,7 @@ nav.heading ul li {
   position:absolute;
   display: none;
   right: -20px;
+  top: 50px;
   
 }
 
