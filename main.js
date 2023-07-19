@@ -1,14 +1,14 @@
 console.log("connected");
 
-const imageContainer = document.querySelector('.image-container');
-const imageElement = document.getElementById('image');
+const imageContainer = document.querySelector(".image-container");
+const imageElement = document.getElementById("image");
 
 const images = [
-  'file:///Users/yakobasebe/Pictures/2020-04-29%20(2).jpg',
-  'file:///Users/yakobasebe/Pictures/2020-04-29.jpg',
-  'file:///Users/yakobasebe/Pictures/2021-10-14.jpg',
-  'file:///Users/yakobasebe/Pictures/IMG-20211217-WA0008.jpg',
-  'file:///Users/yakobasebe/Pictures/2020-04-29%20(1).jpg'
+  "file:///Users/yakobasebe/Pictures/2020-04-29%20(2).jpg",
+  "file:///Users/yakobasebe/Pictures/2020-04-29.jpg",
+  "file:///Users/yakobasebe/Pictures/2021-10-14.jpg",
+  "file:///Users/yakobasebe/Pictures/IMG-20211217-WA0008.jpg",
+  "file:///Users/yakobasebe/Pictures/2020-04-29%20(1).jpg",
 ];
 
 let currentIndex = 0;
