@@ -66,7 +66,14 @@ submitButtons.forEach((button) => {
   });
 });
 const searchInputFocus = () => {
-  console.log(`focus occurred`)
-}
-const searchItemInput = document.body.querySelector("#input")
-searchItemInput.addEventListener(`focus`,searchInputFocus)
+  console.log(`focus occurred`);
+};
+
+const menuIcon = document.getElementById("menu-icon");
+const menu = document.getElementById("menu");
+const topUpMenu = document.getElementById("menu");
+
+menuIcon.addEventListener("click", () => {
+  menu.classList.toggle("menu-hidden");
+  topUpMenu.classList.toggle("menu-hidden");
+});
