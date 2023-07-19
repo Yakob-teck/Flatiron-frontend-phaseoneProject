@@ -42,25 +42,31 @@ quoteButtons.forEach((button) => {
 });
 
 // Add click event listener to the submit button within the quote form
-const submitButtons = document.querySelectorAll('.quote-form input[type="submit"]');
+const submitButtons = document.querySelectorAll(
+  '.quote-form input[type="submit"]'
+);
 submitButtons.forEach((button) => {
-  button.addEventListener('click', (event) => {
+  button.addEventListener("click", (event) => {
     event.preventDefault(); // Prevent form submission
 
     // Get the parent form element
-    const quoteForm = event.target.closest('.quote-form');
+    const quoteForm = event.target.closest(".quote-form");
 
     // Get form input elements
-    const nameInput = quoteForm.querySelector('.name-input');
-    const telephoneInput = quoteForm.querySelector('#telephone');
-    const messageInput = quoteForm.querySelector('.message-input');
+    const nameInput = quoteForm.querySelector(".name-input");
+    const telephoneInput = quoteForm.querySelector("#telephone");
+    const messageInput = quoteForm.querySelector(".message-input");
 
-    if (nameInput.value === '' || telephoneInput.value === '' || messageInput.value === '') {
+    if (
+      nameInput.value === "" ||
+      telephoneInput.value === "" ||
+      messageInput.value === ""
+    ) {
       // Display validation message
-      alert('Please fill in all the required fields.');
+      alert("Please fill in all the required fields.");
     } else {
       // If all required fields are filled, hide the quote form
-      quoteForm.style.display = 'none';
+      quoteForm.style.display = "none";
       // You can add code here to handle form submission, e.g., send data to the server.
     }
   });
