@@ -1,0 +1,13 @@
+{
+  "posts": [
+    { "id": 1, "Name": "Ethiopian clay pottery", "price": 5 },
+    { "id": 2, "Name": "Coffee", "price": 10 },
+    { "id": 3, "Name": "buna", "price": 25 },
+    { "id": 4, "Name": "Shiro", "price": 15 },
+    {
+      "id": 5,
+      "Name": "flag",
+      "price": 17
+    }
+  ]
+}
