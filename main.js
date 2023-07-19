@@ -29,14 +29,14 @@ setInterval(displayNextImage, 3000);
 const quoteButtons = document.querySelectorAll('.quote-button');
 
 quoteButtons.forEach((button) => {
-  button.addEventListener('click', (event) => {
+  button.addEventListener("click", (event) => {
     const quoteForm = event.target.nextElementSibling;
-    if (quoteForm.style.display === 'block') {
+    if (quoteForm.style.display === "block") {
       // If the form is visible, hide it
-      quoteForm.style.display = 'none';
+      quoteForm.style.display = "none";
     } else {
       // If the form is hidden, show it
-      quoteForm.style.display = 'block';
+      quoteForm.style.display = "block";
     }
   });
 });
