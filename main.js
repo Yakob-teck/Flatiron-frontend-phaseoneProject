@@ -1,8 +1,7 @@
 console.log("connected");
 
-const imageContainer = document.querySelector(".image-container");
+// Image slideshow
 const imageElement = document.getElementById("image");
-
 const images = [
   "file:///Users/yakobasebe/Pictures/2020-04-29%20(2).jpg",
   "file:///Users/yakobasebe/Pictures/2020-04-29.jpg",
@@ -18,68 +17,24 @@ function displayNextImage() {
   currentIndex = (currentIndex + 1) % images.length;
 }
 
-
 displayNextImage();
 
 // Set the interval to change the image every 3 seconds (3000 milliseconds)
 setInterval(displayNextImage, 3000);
+const getQuoteButton = document.getElementById("getQuoteButton");
+const quoteForm = document.getElementById("quoteForm");
 
-
-
-const quoteButtons = document.querySelectorAll('.quote-button');
-
-quoteButtons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    const quoteForm = event.target.nextElementSibling;
-    if (quoteForm.style.display === "block") {
-      // If the form is visible, hide it
-      quoteForm.style.display = "none";
-    } else {
-      // If the form is hidden, show it
-      quoteForm.style.display = "block";
-    }
-  });
+getQuoteButton.addEventListener("click", () => {
+  quoteForm.style.display = "block";
 });
 
-// Add click event listener to the submit button within the quote form
-const submitButtons = document.querySelectorAll(
-  '.quote-form input[type="submit"]'
-);
-submitButtons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    event.preventDefault(); // Prevent form submission
+const quoteFormElement = document.getElementById("quoteForm");
+quoteFormElement.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-    // Get the parent form element
-    const quoteForm = event.target.closest(".quote-form");
+  // Replace this part with your code to handle the form submission
+  // For example, you can use JavaScript to send the data to a server or display a success message.
 
-    // Get form input elements
-    const nameInput = quoteForm.querySelector(".name-input");
-    const telephoneInput = quoteForm.querySelector("#telephone");
-    const messageInput = quoteForm.querySelector(".message-input");
-
-    if (
-      nameInput.value === "" ||
-      telephoneInput.value === "" ||
-      messageInput.value === ""
-    ) {
-      // Display validation message
-      alert("Please fill in all the required fields.");
-    } else {
-      // If all required fields are filled, hide the quote form
-      quoteForm.style.display = "none";
-      // You can add code here to handle form submission, e.g., send data to the server.
-    }
-  });
-});
-const searchInputFocus = () => {
-  console.log(`focus occurred`);
-};
-
-const menuIcon = document.getElementById("menu-icon");
-const menu = document.getElementById("menu");
-const topUpMenu = document.getElementById("menu");
-
-menuIcon.addEventListener("click", () => {
-  menu.classList.toggle("menu-hidden");
-  topUpMenu.classList.toggle("menu-hidden");
+  // Clear the form after submission
+  quoteFormElement.reset();
 });

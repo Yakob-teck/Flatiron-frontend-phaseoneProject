@@ -1,82 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Phase 1 Project</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css" integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="main.js" ></script>
-</head>
-<body>
-    <header>
-        <section class="header">
-            <section class="logo">
-                <a href="#">  Rohoboth Ethio-Africa Market - Variety Store  </a>
-            </section>
-            <nav class="heading">
-                <ul>
-                    <li><a href="#" class="under">HOME</a></li>
 
-                  <li><a href="#ItemsList" class="under">PRODUCTS</a></li>
-                  <li><a href="#section1" class="under">CONTACT US</a></li>
-                 
-                </ul>
-              </nav>
-              <section class="get-quote">
-                <button class="quote-button">Get Quote</button>
-                <form class="quote-form">
-                  <label for="name">E-mail:</label>
-                  <input type="E-mail" class="name-input" required>
-              
-                  <label for="telephone">Telephone:</label>
-                  <input type="tel" id="telephone" required>
-              
-                  <label for="message">Message:</label>
-                  <textarea class="message" required></textarea>
-              
-                  <input type="submit" value="Submit">
-                </form>
-              </section>
-              
-            <section class="search">
-                <form action="GET" Id="items">
-                <input  id="input" type="text" placeholder="Search" required/>
-                <input type="submit" value="Search">
-            </form>
-            </section>
-            <div id= "searchResults"></div>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+      integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <header>
+      <section class="header">
+        <section class="logo">
+          <a href="#">Rohoboth Ethio-Africa Market - Variety Store</a>
+        </section>
+        <nav class="heading" id="home">
+          <ul>
+            <li><a href="tel:+14034020030" class="under">CALL</a></li>
+            <li><a href="#ItemsList" class="under">PRODUCTS</a></li>
+            <li><a href="#section1" class="under">CONTACT US</a></li>
+          </ul>
+        </nav>
+      </section>
     </header>
-    
-    
-    <section class="menu-icon" id="menu-icon">
-            <section class="bar"></section>
-            <section class="bar"></section>
-            <section class="bar"></section>
-    </section>
-    <nav class=" menu" id=" menu">
-        <ul>
-    <li><a href="#about-us">About Us</a></li>
-    <li><a href="#customer-review">Customer Review</a></li>
-    <li><a href="#comment">Comment</a></li>
-        </ul>
-    </nav>
-        
-</header>
-   
+   <button id="getQuoteButton">Get Quote</button>
+<section id="quoteForm" style="display: none;">
+  <h2>Get a Quote</h2>
+  <form id="quoteForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="telephone">Telephone:</label>
+    <input type="tel" id="telephone" name="telephone" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+</section>
 
     <section>
-        <section class="image-section">
-            <section class="image-container">
-                <img id="image" src="" alt="Image">
-               
-            </section>
+      <section class="image-section">
+        <section class="image-container">
+          <img id="image" src="" alt="Image" />
         </section>
-        <section id="ItemsList"></section>
-            <section class="section2">
-                <section class="container">
+      </section>
+      <section id="ItemsList"></section>
+      <section class="section2">
+         <section class="container">
                     <section class="items">
                         <section class="img img1">
                             <img
@@ -299,60 +282,46 @@
                         </section>
                     </section>
                 </section>
-                    </section>
-                    </section>
-    </section> 
-   
+      </section>
     
-</body>
-<footer>
+      </section>
+    </section>
+  </body>
+  <footer>
     <section class="footer0"><h1>Rohoboth Ethio-Africa Marketing</h1></section>
     <section class="footer1">
-        Connect with us at
-        <section class="social-media">
-            <ion-icon name="logo-facebook"></ion-icon>
-
-            <a href="#"><ion-icon name="logo-twitter"></ion-icon>Twitter</a>
-            <a href="#"><ion-icon name="logo-instagram"></ion-icon>Instagram</a>
-        </section>
+      Connect with us at
+      <section class="social-media">
+        <ion-icon name="logo-facebook"></ion-icon>
+        <a href="#"><ion-icon name="logo-twitter"></ion-icon>Twitter</a>
+        <a href="#"><ion-icon name="logo-instagram"></ion-icon>Instagram</a>
+      </section>
     </section>
     <section class="footer2">
-        <section id="section1"></section>
-        <section class="Address">
-            
-            <h2>Address</h2>
-            <a href="https://www.google.com/maps?q=3131+27+Street+Northeast+unit+%23105,+Calgary,+AB+T1Y+0B3,+Canada" target="_blank" rel="noopener noreferrer">
-                Get Directions
-              </a>
-            <p >3131 27 Street Northeast unit # 105</p>
-            <p >Calgary, AB T1Y 0B3</p>
-            <p >Canada</p>
-        </section>
-        <section class="Business Hours">
-            <h2>Business Hours</h2>
-            <p>Mon:	10:00 AM – 8:00 PM</p>
-            <p >Tue:	10:00 AM – 8:00 PM</p>
-            <p>Wed:	10:00 AM – 8:00 PM</p>
-            <p>Thu:	10:00 AM – 8:00 PM</p>
-            <p >Fri:10:00 AM – 8:00 PM</p>
-            <p >Sat:10:00 AM – 8:00 PM</p>
-            <p>Sun:	Closed</p>
-        </section>
-   
-</footer>
-
+      <section id="section1"></section>
+      <section class="Address">
+        <li><a href="#home" class="under">TOP PAGE</a></li>
+        <h2>Address</h2>
+        <a
+          href="https://www.google.com/maps?q=3131+27+Street+Northeast+unit+%23105,+Calgary,+AB+T1Y+0B3,+Canada"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Get Directions
+        </a>
+        <p>3131 27 Street Northeast unit # 105</p>
+        <p>Calgary, AB T1Y 0B3</p>
+        <p>Canada</p>
+      </section>
+      <section class="Business Hours">
+        <h2>Business Hours</h2>
+        <p>Mon: 10:00 AM – 8:00 PM</p>
+        <p>Tue: 10:00 AM – 8:00 PM</p>
+        <p>Wed: 10:00 AM – 8:00 PM</p>
+        <p>Thu: 10:00 AM – 8:00 PM</p>
+        <p>Fri: 10:00 AM – 8:00 PM</p>
+        <p>Sat: 10:00 </p>
+      </section>
+    </section>
+  </footer>
 </html>
-
-
-
-
-  
-
-
-  
-
-  
-
-
-
-
