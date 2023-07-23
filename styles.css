@@ -67,10 +67,74 @@ nav.heading ul li {
   text-decoration: none;
   color: #d9d4d4;
 }
+.top-menu {
+  position: absolute;
+  top: 0.5px;
+  height: 0.5px;
+  left: 0px;
+  width: 2px;
+  background-color: black;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+
+.menu-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #161717;
+  list-style: outside;
+  display: none;
+  gap: 20px;
+}
+.menu-list.show {
+  display: flex;
+  flex-direction: column;
+}
+.menu-list li {
+  padding: 10px;
+}
+
+.menu-list li a {
+  text-decoration: none;
+  color: #ece0e0;
+}
+
+.content {
+  padding: 20px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+/* Menu Icon Styles */
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+}
+
+/* Hide the menu list initially on small screens */
+@media (max-width: 768px) {
+  .menu-list {
+    display: none;
+  }
+}
 /* Styling for the "Get Quote" button */
 #getQuoteButton {
-  position: fixed;
-  top: 20px;
+  position: absolute;
+  top: 60px;
   right: 20px;
   z-index: 9999;
   background-color: #007bff;
@@ -83,16 +147,18 @@ nav.heading ul li {
 
 /* Styling for the quote form */
 #quoteForm {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 15%;
+  left: 80%;
+  border-style: none;
+  border-spacing: 1px;
   padding: 20px;
-  background-color: #f0f0f0;
+  background-color: #74b3de;
   border-radius: 5px;
   display: none;
   z-index: 9999;
 }
+
 .image-section {
   margin-top: 100px;
   display: flex;

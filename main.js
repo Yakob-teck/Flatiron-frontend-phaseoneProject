@@ -23,18 +23,59 @@ displayNextImage();
 setInterval(displayNextImage, 3000);
 const getQuoteButton = document.getElementById("getQuoteButton");
 const quoteForm = document.getElementById("quoteForm");
+const quoteFormElement = document.getElementById("quoteFormElement");
 
 getQuoteButton.addEventListener("click", () => {
-  quoteForm.style.display = "block";
+  if (quoteForm.style.display === "block") {
+    quoteForm.style.display = "none";
+  } else {
+    quoteForm.style.display = "block";
+    quoteFormElement.reset();
+  }
 });
 
-const quoteFormElement = document.getElementById("quoteForm");
 quoteFormElement.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  // Replace this part with your code to handle the form submission
-  // For example, you can use JavaScript to send the data to a server or display a success message.
+  // Get the form data
+  const formData = new FormData(quoteFormElement);
+  const formDataObject = {};
+  formData.forEach((value, key) => {
+    formDataObject[key] = value;
+  });
 
-  // Clear the form after submission
-  quoteFormElement.reset();
+  // Make the POST request to the server
+  fetch("http://localhost:3000/form", {
+    method: "POST",
+    headers: {
+      // Set the Content-Type header to "multipart/form-data"
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData, // Use the FormData object directly as the body
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Handle the success response here
+      console.log(formDataObject);
+      //console.log("Data sent successfully:", data);
+
+      // Display a success message to the user
+      alert("Quote submitted successfully!");
+
+      // Clear the form after submission
+      quoteFormElement.reset();
+    })
+    .catch((error) => {
+      // Handle any errors that occur during the fetch request
+      console.error("Error:", error);
+
+      alert("Error submitting quote. Please try again later.");
+    });
+});
+const menuIcon = document.getElementById("menuIcon");
+const menuList = document.getElementById("menuList");
+
+// Toggle the menu list on small screens when the menu icon is clicked
+menuIcon.addEventListener("click", () => {
+  menuList.classList.toggle("show");
 });
