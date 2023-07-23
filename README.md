@@ -1,5 +1,6 @@
 # Flatiron-frontend-phaseoneProject
-my first project in flatiron 
+
+my first project in flatiron
 Project Title
 Phase 1 Project
 
@@ -27,14 +28,11 @@ The project is released under the MIT License.
 Contact
 For any inquiries or feedback, please contact the project owner:
 
-Name: [Your Name]
-Email: [Your Email Address]
+Name: Yakob lema Asebe
+Email: asebeyakob@gmail.com
 Feel free to reach out with any questions or suggestions regarding the project.
 
 Acknowledgments
 Ionic Framework for the Ionicons used in the project.
 Normalize.css for the CSS reset.
 GitHub for hosting the project.
-Include any acknowledgments or references to external resources that have been used in the project.
-
-That's a basic README file template for your project. Make sure to replace the placeholders ([Your Name], [Your Email Address], etc.) with your own information. You can add or modify sections based on your project's specific needs.
