@@ -1,10 +1,52 @@
-body {
+.body {
   background-color: rgb(250, 250, 252);
 
   padding: 0;
   box-sizing: border-box;
   display: block;
   margin: 8px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: left;
+  margin: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#itemDetails {
+  margin-top: 20px;
+}
+
+#itemDetails img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 
 .header {
@@ -67,6 +109,10 @@ nav.heading ul li {
   text-decoration: none;
   color: #d9d4d4;
 }
+#searchInput {
+  left: 10px;
+}
+
 .top-menu {
   position: absolute;
   top: 0.5px;
@@ -134,8 +180,8 @@ h2 {
 /* Styling for the "Get Quote" button */
 #getQuoteButton {
   position: absolute;
-  top: 10px;
-  right: 350px;
+  top: 80px;
+  right: 150px;
   z-index: 9999;
   background-color: #007bff;
   color: #fff;

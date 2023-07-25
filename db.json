@@ -1,5 +1,29 @@
 {
-  "form": [
+  "items": [
+    {
+      "id": 1,
+      "name": "Ethiopian clay pottery",
+      "image": "https://ethiopianfood.files.wordpress.com/2013/08/my-three-dist.jpg",
+      "price": 5,
+      "info": "Ethiopian clay pottery"
+    },
+    {
+      "id": 2,
+      "name": "MESOB",
+      "image": "https://en.wikipedia.org/wiki/Mesob#/media/File:Addis-Abeba-Table_basse.jpg",
+      "price": 79.99,
+      "info": "Ethiopian Handmade mesobwork"
+    },
+    {
+      "id": 2,
+      "name": "flag",
+      "image": "https://en.wikipedia.org/wiki/Flag_of_Ethiopia#/media/File:Flag_of_Ethiopia.svg",
+      "price": 79.99,
+      "info": "Ethiopian Handmade mesobwork"
+    }
+  ],
+
+  "posts": [
     {
       "Id": 1,
       "Name": "Ethiopian clay pottery",
@@ -55,9 +79,6 @@
       "email": "yakoblema@gmail.com",
       "Telephone": 4022002002,
       "message": "Hi there"
-    },
-    {
-      "id": 9
     }
   ]
 }
