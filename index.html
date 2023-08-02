@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Phase 1 Project</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
@@ -32,43 +35,52 @@
       </section>
     </header>
     <h1>Item Search</h1>
-  <input type="text" id="searchInput" placeholder="Search for an item...">
-  <button onclick="searchItem()">Search</button>
-  <section id="itemDetails">
-    <!-- The item details will be displayed here -->
-  </section>
-   <button id="getQuoteButton">Get Quote</button>
-<section id="quoteForm">
-  <h2>Get a Quote</h2>
-  <form id="quoteFormElement">
-    <label for="name">Name:</label>
-    <input type="text" id="Name" name="Name" required>
+    <div>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search for items names"
+      />
+      <button id="searchButton">Search</button>
+    </div>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+    <div id="searchResults"></div>
 
-    <label for="telephone">Telephone:</label>
-    <input type="tel" id="Telephone" name="Telephone" required>
-
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" required></textarea>
-
-    <button type="submit">Submit</button>
-  </form>
-</section>
-  <nav class="top-menu">
-    <section class="menu-icon" id="menuIcon">
-      <section class="bar"></section>
-      <section class="bar"></section>
-      <section class="bar"></section>
+    <section id="itemDetails">
+      <!-- The item details will be displayed here -->
     </section>
-    <ul class="menu-list" id="menuList">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#contact">Customer Comment </a></li>
-    </ul>
-  </nav>
+    <button id="getQuoteButton">Get Quote</button>
+    <section id="quoteForm">
+      <h2>Get a Quote</h2>
+      <form id="quoteFormElement" action="/sumit-quote" method="post">
+        <label for="Name">Name:</label>
+        <input type="text" name="name" placeholder="Name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" placeholder="Email" required />
+
+        <label for="Telephone">Telephone:</label>
+        <input type="tel" name="telephone" placeholder="Telephone" required />
+
+        <label for="message">Message:</label>
+        <textarea name="message" placeholder="message" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+    <nav class="top-menu">
+      <section class="menu-icon" id="menuIcon">
+        <section class="bar"></section>
+        <section class="bar"></section>
+        <section class="bar"></section>
+      </section>
+      <ul class="menu-list" id="menuList">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Customer Comment</a></li>
+      </ul>
+    </nav>
     <section>
       <section class="image-section">
         <section class="image-container">
@@ -76,250 +88,34 @@
         </section>
       </section>
       <section id="ItemsList"></section>
+      <p><a href="#home">PRODUCTS</a></p>
       <section class="section2">
-         <section class="container" id="itemsContainer">
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Jebena_Ethiopian_coffee_pot.jpg"
-                                alt=" ceramic jebena set pic"
-/>
-                        </section>
-                        <section class="name">Ethiopian clay pottery</section>
-                        <section class="price">$5</section>
-                        <section class="info">
-                            
-                        </section>
-                        </section>
-                    <section class="items">
-                        <section class="img img2">
-                            <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Addis-Abeba-Table_basse.jpg/440px-Addis-Abeba-Table_basse.jpg"
-                                alt="mesob"
-                            />
-                        </section>
-                        <section class="Name">MESOB</section>
-                        <section class="info">Ethiopian Handmade mesobwork</section>
-                        <section class="price">$79.99</section>
-                    </section>
-                    <section class="items">
-                        <section class="img img3">
-                            <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVcaMWY29EObS30o5pJ5OCVPYAkZoAggpUZA&usqp=CAU"
-                                alt="buna"
-                            />
-                        </section>
-                        <section class="name">Coffee</section>
-                        <section class="price">$19</section>
-                        <section class="info">Ethiopian Yirgacheffe washed speciallity Coffee</section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="https://sc04.alicdn.com/kf/HTB1hWHrsMaTBuNjSszfq6xgfpXaN.jpg"
-                                alt="jebena"
-                            />
-                        </section>
-                        <section class="name">Jebena</section>
-                        <section class="price">$19.99</section>
-                        <section class="info"></section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="https://w7.pngwing.com/pngs/556/911/png-transparent-bible-ethiopia-amharic-free-snake-link-free-holy-bible-text-logo-sign.png"
-                                alt="bible"
-                            />
-                        </section>
-                        <section class="name">Amharic Bible</section>
-                        <section class="price">$30</section>
-                        <section class="info">large size </section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="file:///Users/yakobasebe/Pictures/H2f26e8dfab3b41efb0d24db86bb41e7c1.jpg_280x280.webp"
-                                alt="Clay pottery"
-                            />
-                        </section>
-                        <section class="name">Eritrean/ Ethiopian culture custom saba and telet design bed sheet, pillowcase & duvet cover sets</section>
-                        <section class="price">$18</section>
-                        <section class="info">Ethiopian clay pottery</section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="file:///Users/yakobasebe/Pictures/il_340x270.4647859744_3z2s.webp"
-                                alt="cloths"
-                            />
-                        </section>
-                        <section class="name"> Habesha deress </section>
-                        <section class="price">$60.7</section>
-                        <section class="info">Ethiopia Traditional Hand Embroidered Dress Tigrignaraya.</section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="https://media.istockphoto.com/photos/vintage-plates-with-silver-teaspoons-picture-id184363070"
-                                alt=""
-                            />
-                        </section>
-                        <section class="name">Injera</section>
-                        <section class="price">$10</section>
-                        <section class="info">
-                          
-                        </section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCAmncDoAPI-JkCVXNLufswRy457YkOAYKAgetDYojD2UlwzaWXxMQylJmGiHQJFzn5Yo&usqp=CAU"
-                                alt="Shiro"
-                            />
-                        </section>
-                        <section class="name">SHIRO</section>
-                        <section class="price">$9.9</section>
-                        <section class="info">
-                            
-                        </section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="https://ethiopianspices.com/cdn/shop/products/store_carmera_2020725_73633_118_grande.jpg?v=1595677146"
-                                alt=""
-                            />
-                        </section>
-                        <section class="name">YEWOT KIMEM</section>
-                        <section class="price">$10</section>
-                        <section class="info">
-                            
-                        </section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="https://www.tasteatlas.com/images/ingredients/a980301939104661985363ee155b5d23.jpg"
-                                alt="MITMITA"
-                            />
-                        </section>
-                        <section class="name">MITMITA</section>
-                        <section class="price">$30</section>
-                        <section class="info">
-                            
-                        </section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="https://static1.squarespace.com/static/5db48cdef991e52a49075819/5db4a078bf2c227aace3286d/5f9897edf8d2f740b72a98b0/1609445320356/Rolled+Injera.jpg?format=1500w"
-                            />
-                        </section>
-                        <section class="name">INJERA</section>
-                        <section class="price">$5.7</section>
-                        <section class="info">
-                           
-                        </section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRknq3HAinw-MNjEs-tTYrEmAeUY5q82hmGzw&usqp=CAU"
-                                alt="books"
-                            />
-                        </section>
-                        <section class="name">Different types of books</section>
-                        <section class="price">starting $10</section>
-                        <section class="info">
-                           
-                        </section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="https://i.ebayimg.com/images/g/-a8AAOSwKhpeOfx0/s-l1200.jpg"
-                                alt=""
-                            />
-                        </section>
-                        <section class="name">Table Mat </section>
-                        <section class="price">$78</section>
-                        <section class="info">
-                           Saba Table mat
-                        </section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="https://ih1.redbubble.net/image.1965108895.6925/tb,840x840,medium-c,1,198,600,600-bg,f8f8f8.jpg"
-                                alt=""
-                            />
-                        </section>
-                        <section class="name">Tradational Bag</section>
-                        <section class="price">$9</section>
-                        <section class="info">
-                           
-                        </section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="https://www.michaelbackmanltd.com/wp-content/uploads/2021/04/6910-Ethiopian-Cross-2.jpg"
-                                alt="cross%20image"
-                            />
-                        </section>
-                        <section class="name">Cross Image</section>
-                        <section class="price">$36.5</section>
-                        <section class="info">
-                           
-                        </section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="https://cdn.britannica.com/12/12-004-A40EEB6F/Flag-Ethiopia.jpg"
-                                alt="flag"
-                            />
-                        </section>
-                        <section class="name">Ethiopia Flag </section>
-                        <section class="price">$25.6</section>
-                        <section class="info">
-                            
-                        </section>
-                    </section>
-                    <section class="items">
-                        <section class="img img1">
-                            <img
-                                src="https://www.wasselectronics.com/wp-content/uploads/2015/08/WASS-Grill-Digital-Mitad-1.png"
-                                alt="mitad"
-                            />
-                        </section>
-                        <section class="name">YE INJERA MITAD</section>
-                        <section class="price">$56</section>
-                        <section class="info">
-                            
-                        </section>
-                    </section>
-                </section>
-      </section>
-    
+        <section class="container" id="itemsContainer">
+          <!-- Product items will be rendered dynamically here -->
+        </section>
       </section>
     </section>
   </body>
   <footer>
-    <section class="footer0"><h1>Rohoboth Ethio-Africa Marketing</h1></section>
+    <section class="footer0">
+      <h1>Rohoboth Ethio-Africa Marketing</h1>
+    </section>
     <section class="footer1">
-     <p> Connect with us at </p>
-     <section class="social-media">
-  
-    <a href="https://www.facebook.com/your_facebook_page_url" class="fa fa-facebook"></a>
-    <a href="https://www.twitter.com/your_twitter_page_url" class="fa fa-twitter"></a>
-  
-</section>
+      <p>Connect with us at</p>
+      <section class="social-media">
+        <a
+          href="https://www.facebook.com/your_facebook_page_url"
+          class="fa fa-facebook"
+        ></a>
+        <a
+          href="https://www.twitter.com/your_twitter_page_url"
+          class="fa fa-twitter"
+        ></a>
+      </section>
     </section>
     <section class="footer2">
       <section id="section1"></section>
       <section class="Address">
-       
         <h2>Address</h2>
         <a
           href="https://www.google.com/maps?q=3131+27+Street+Northeast+unit+%23105,+Calgary,+AB+T1Y+0B3,+Canada"
@@ -340,8 +136,29 @@
         <p>Thu: 10:00 AM – 8:00 PM</p>
         <p>Fri: 10:00 AM – 8:00 PM</p>
         <p>Sat: 10:00 </p>
-         
-      </section> <a href="#home" class="Back">TOP PAGE</a>
+      </section>
+      <a href="#home" class="Back">TOP PAGE</a>
     </section>
   </footer>
+  <p>Customer reviews</p>
+  <div class="star-rating" id="star-rating">
+    <span class="star" data-rating="1">&#9733;</span>
+    <span class="star" data-rating="2">&#9733;</span>
+    <span class="star" data-rating="3">&#9733;</span>
+    <span class="star" data-rating="4">&#9733;</span>
+    <span class="star" data-rating="5">&#9733;</span>
+  </div>
+  <p id="rating-text">Hover over the stars to rate!</p>
+
+  <form id="review-form">
+    <textarea
+      id="comment"
+      placeholder="Write your review and comments here"
+    ></textarea>
+    <button type="submit">Submit Review</button>
+  </form>
+
+  <div id="user-review">
+    <!-- User review and comment will be displayed here -->
+  </div>
 </html>

@@ -13,6 +13,15 @@ body {
   margin: 20px;
 }
 
+p {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #f5085e;
+  margin-bottom: 10px;
+  font: bold;
+}
+
 h1 {
   margin-bottom: 20px;
 }
@@ -194,7 +203,7 @@ h2 {
 /* Styling for the quote form */
 #quoteForm {
   position: absolute;
-  top: 15%;
+  top: 25%;
   left: 80%;
   border-style: none;
   border-spacing: 1px;
@@ -204,110 +213,42 @@ h2 {
   display: none;
   z-index: 9999;
 }
-
-.image-section {
-  margin-top: 100px;
+/* Add this CSS to your stylesheet or style block */
+#image {
   display: flex;
-  justify-content: center;
+  margin-top: 10%;
+  margin-left: 30%;
+  left: 40%;
+  width: 25%;
+  padding: 2px;
+
+  z-index: 9999; /* Set a high z-index to ensure it appears above other elements */
+}
+
+.items {
+  /*  the width and height of the container */
+  width: 200px;
+  height: 300px;
+  background-color: white;
+  border: 2.5px solid black;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  height: 300px;
 }
 
-.image-section img {
-  position: relative;
-  max-width: 200%;
-  max-height: 100%;
-}
-.image-container {
-  display: flex;
-  width: 520px;
-  height: 300px;
-}
-
-.image-container img {
-  width: 300%;
-  height: 100%;
-  margin: 0 10px;
-}
-
-.img-slider img {
-  height: 720px;
-  width: 1080px;
-}
-
-@keyframes slide {
-  0% {
-    left: 0px;
-  }
-  15% {
-    left: 0px;
-  }
-  20% {
-    left: -1080px;
-  }
-  32% {
-    left: -1080px;
-  }
-  35% {
-    left: -2160px;
-  }
-  47% {
-    left: -2160px;
-  }
-  50% {
-    left: -3240px;
-  }
-  63% {
-    left: -3240px;
-  }
-  66% {
-    left: -4320px;
-  }
-  79% {
-    left: -4320px;
-  }
-  82% {
-    left: -5400px;
-  }
-  100% {
-    left: 0px;
-  }
-}
-
-.img-slider {
-  display: flex;
-  float: left;
-  position: absolute;
-  width: 1080px;
-  height: 720px;
-  animation-name: slide;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
-  transition-duration: 2s;
+.product-image {
+  /* Make the image responsive and fit within the container */
+  display: inline-block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .heading1 {
   opacity: 0;
-}
-
-.image-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
-}
-
-.image-section img {
-  max-width: 100%;
-  max-height: 100%;
-}
-.section2 .container {
-  display: flex;
-  width: 100%;
-  height: max-content;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 10px auto;
 }
 
 .section2 .container .items {
@@ -343,9 +284,10 @@ h2 {
 }
 
 .section2 .container .items .img img {
-  width: 200px;
-  height: 200px;
-  margin: 0;
+  object-fit: cover;
+  width: 100px;
+  height: 100 px;
+  margin: 10 px;
   padding: 0;
   border-radius: 12px;
   transition-duration: 0.8s;
@@ -353,7 +295,7 @@ h2 {
 
 .section2 .container .items .img {
   overflow: hidden;
-  margin: 0;
+  margin: 5 px;
 }
 
 .section2 .container .items:hover .img img {
@@ -482,31 +424,42 @@ footer {
   justify-content: center;
   align-items: center;
 }
-
-.search a {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.search a ion-icon {
-  color: white;
-  background-color: black;
-}
-
-.search a:hover ion-icon {
-  color: red;
-  transform: translateY(5px);
-}
-
 .footer0 {
   font-weight: 1200;
   transition-duration: 1s;
 }
 
 .footer0:hover {
+  align-content: flex-start;
   color: rgb(243, 7, 129);
 }
 
-.items {
-  overflow: hidden;
+.star-rating {
+  font-size: 24px; /* Size of the stars */
+  color: #ccc; /* Color of the empty stars */
+}
+
+.star {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.star.active {
+  color: gold;
+}
+
+#review-form {
+  margin-top: 20px;
+}
+
+#comment {
+  display: block;
+  width: 100%;
+  height: 100px;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+#user-review {
+  margin-top: 30px;
 }

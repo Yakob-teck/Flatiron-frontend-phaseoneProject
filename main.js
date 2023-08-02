@@ -1,5 +1,3 @@
-console.log("connected");
-
 // Image slideshow
 const imageElement = document.getElementById("image");
 const images = [
@@ -19,11 +17,9 @@ function displayNextImage() {
 
 displayNextImage();
 setInterval(displayNextImage, 3000);
-
 const getQuoteButton = document.getElementById("getQuoteButton");
 const quoteForm = document.getElementById("quoteForm");
 const quoteFormElement = document.getElementById("quoteFormElement");
-
 getQuoteButton.addEventListener("click", () => {
   if (quoteForm.style.display === "block") {
     quoteForm.style.display = "none";
@@ -36,27 +32,18 @@ getQuoteButton.addEventListener("click", () => {
 quoteFormElement.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  // Get the form data
+  // Get the form data using FormData
   const formData = new FormData(quoteFormElement);
-  const formDataObject = {};
-  formData.forEach((value, key) => {
-    formDataObject[key] = value;
-  });
 
   // Make the POST request to the server
-  fetch("  http://localhost:3000/posts", {
+  fetch("http://localhost:3000/posts", {
     method: "POST",
-    headers: {
-      // Set the Content-Type header to "multipart/form-data"
-      "Content-Type": "multipart/form-data",
-    },
     body: formData, // Use the FormData object directly as the body
   })
     .then((response) => response.json())
     .then((data) => {
       // Handle the success response here
-      console.log(formDataObject);
-      //console.log("Data sent successfully:", data);
+      console.log("Quote submitted successfully:", data);
 
       // Display a success message to the user
       alert("Quote submitted successfully!");
@@ -71,6 +58,7 @@ quoteFormElement.addEventListener("submit", (event) => {
       alert("Error submitting quote. Please try again later.");
     });
 });
+
 const menuIcon = document.getElementById("menuIcon");
 const menuList = document.getElementById("menuList");
 
@@ -78,113 +66,141 @@ const menuList = document.getElementById("menuList");
 menuIcon.addEventListener("click", () => {
   menuList.classList.toggle("show");
 });
-// Sample database JSON (replace this with your actual data)
-const database = {
-  items: [
-    {
-      id: 1,
-      name: "Ethiopian clay pottery",
-      image:
-        "https://ethiopianfood.files.wordpress.com/2013/08/my-three-dist.jpg",
-      price: 5,
-      info: "Ethiopian clay pottery",
-    },
-    {
-      id: 2,
-      name: "MESOB",
-      image:
-        "https://en.wikipedia.org/wiki/Mesob#/media/File:Addis-Abeba-Table_basse.jpg",
-      price: 79.99,
-      info: "Ethiopian Handmade mesobwork",
-    },
-    {
-      id: 2,
-      name: "flag",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Flag_of_Ethiopia.svg/2560px-Flag_of_Ethiopia.svg.png",
-      price: 79.99,
-      info: "Ethiopian Handmade mesobwork",
-    },
-  ],
 
-  posts: [
-    {
-      Id: 1,
-      Name: "Ethiopian clay pottery",
-      email: "yakoblema@gmail.com",
-      Telephone: 4022002002,
-      message: "Hi there",
-    },
-    {
-      id: 2,
-      Name: "Tomas Gebre",
-      email: "yakoblema@gmail.com",
-      Telephone: 4022002002,
-      message: "Hi there",
-    },
-    {
-      id: 3,
-      Name: "Tomas Gebre",
-      email: "yakoblema@gmail.com",
-      Telephone: 4022002002,
-      message: "Hi there",
-    },
-    {
-      id: 4,
-      Name: "Tomas Gebre",
-      email: "yakoblema@gmail.com",
-      Telephone: 4022002002,
-      message: "Hi there",
-    },
-    {
-      id: 5,
-      Name: "Tomas Gebre",
-      email: "yakoblema@gmail.com",
-      Telephone: 4022002002,
-      message: "Hi there",
-    },
-    {
-      id: 6,
-      Name: "Tomas Gebre",
-      email: "yakoblema@gmail.com",
-      Telephone: 4022002002,
-      message: "Hi there",
-    },
-    {
-      id: 7,
-      Name: "Tomas Gebre",
-      email: "yakoblema@gmail.com",
-      Telephone: 4022002002,
-      message: "Hi there",
-    },
-    {
-      id: 8,
-      Name: "Tomas Gebre",
-      email: "yakoblema@gmail.com",
-      Telephone: 4022002002,
-      message: "Hi there",
-    },
-  ],
-};
+// Fetch products and render them dynamically
+fetchProducts();
 
-function searchItem() {
-  const searchInput = document
-    .getElementById("searchInput")
-    .value.toLowerCase();
-  const item = database.items.find((item) =>
-    item.name.toLowerCase().includes(searchInput)
-  );
-
-  if (item) {
-    const itemDetails = `
-      <h2>${item.name}</h2>
-      <img src="${item.image}" alt="${item.name}" style="width: 200px; height: 200px;">
-      <p>Price: $${item.price}</p>
-      <p>${item.info}</p>
-    `;
-    document.getElementById("itemDetails").innerHTML = itemDetails;
-    document.getElementById("searchForm").style.display = "none";
-  } else {
-    document.getElementById("itemDetails").innerHTML = "<p>Item not found.</p>";
-  }
+function fetchProducts() {
+  return fetch("http://localhost:3000/items")
+    .then((response) => response.json())
+    .catch((error) => {
+      console.error("Error fetching products:", error);
+    });
 }
+const searchButton = document.getElementById("searchButton");
+searchButton.addEventListener("click", () => {
+  const searchQuery = document.getElementById("searchInput").value;
+  filterProducts(searchQuery);
+});
+function filterProducts(searchQuery) {
+  const searchResultsDiv = document.getElementById("searchResults");
+  searchResultsDiv.innerHTML = ""; // Clear the search results before rendering new ones
+
+  // Fetch products from the server or use the existing data in products variable
+  fetchProducts().then((products) => {
+    const filteredProducts = products.filter((product) =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    if (filteredProducts.length === 0) {
+      searchResultsDiv.innerHTML = "<p>No results found.</p>";
+    } else {
+      renderProducts(filteredProducts);
+    }
+  });
+}
+
+function renderProducts(products) {
+  const itemsContainer = document.getElementById("itemsContainer");
+  itemsContainer.innerHTML = "";
+
+  products.forEach((product) => {
+    const itemElement = document.createElement("section");
+    itemElement.className = "items";
+
+    const imgElement = document.createElement("img");
+    imgElement.src = product.image;
+    imgElement.alt = product.name;
+    imgElement.className = "product-image";
+
+    const nameElement = document.createElement("section");
+    nameElement.className = "name";
+    nameElement.textContent = product.name;
+
+    const priceElement = document.createElement("section");
+    priceElement.className = "price";
+    priceElement.textContent = `$${product.price}`;
+
+    const infoElement = document.createElement("section");
+    infoElement.className = "info";
+    infoElement.textContent = product.info;
+
+    itemElement.appendChild(imgElement);
+    itemElement.appendChild(nameElement);
+    itemElement.appendChild(infoElement);
+    itemElement.appendChild(priceElement);
+
+    itemsContainer.appendChild(itemElement);
+  });
+}
+// Fetch products and render them dynamically on page load
+fetchProducts().then((products) => {
+  renderProducts(products);
+});
+const starRating = document.getElementById("star-rating");
+const ratingText = document.getElementById("rating-text");
+const reviewForm = document.getElementById("review-form");
+const userReview = document.getElementById("user-review");
+
+let userReviews = [];
+// Function to handle mouseover event on stars
+function handleStarHover(event) {
+  const stars = Array.from(starRating.children);
+  const hoveredStarIndex = stars.indexOf(event.target);
+  stars.forEach((star, index) => {
+    star.classList.toggle("active", index <= hoveredStarIndex);
+  });
+
+  // Update the rating text
+  ratingText.textContent = `You're giving ${hoveredStarIndex + 1} star(s)!`;
+}
+
+// Function to reset the stars when the mouse leaves the star rating container
+function resetStars() {
+  const stars = Array.from(starRating.children);
+  stars.forEach((star) => {
+    star.classList.remove("active");
+  });
+
+  // Reset the rating text
+  ratingText.textContent = "Hover over the stars to rate!";
+}
+
+// Function to handle form submission
+function handleSubmit(event) {
+  event.preventDefault();
+  const rating = document
+    .querySelector(".star.active")
+    .getAttribute("data-rating");
+  const comment = document.getElementById("comment").value;
+
+  // Add the user review to the userReviews array
+  userReviews.push({ rating: rating, comment: comment });
+
+  // Clear the form inputs and reset the star rating
+  reviewForm.reset();
+  resetStars();
+
+  // Display the user reviews on the page
+  displayUserReviews();
+}
+
+// Function to display the user reviews on the page
+function displayUserReviews() {
+  userReview.innerHTML = ""; // Clear the existing reviews
+
+  userReviews.forEach((review) => {
+    // Create a new review element and append it to the user-review container
+    const newReview = document.createElement("div");
+    newReview.classList.add("review");
+    newReview.innerHTML = `
+            <p>Rating: ${review.rating} stars</p>
+            <p>${review.comment}</p>
+        `;
+    userReview.appendChild(newReview);
+  });
+}
+
+// Attach event listeners
+starRating.addEventListener("mouseover", handleStarHover);
+starRating.addEventListener("mouseout", resetStars);
+reviewForm.addEventListener("submit", handleSubmit);
