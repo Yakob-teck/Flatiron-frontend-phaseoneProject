@@ -2,7 +2,7 @@
   "items": [
     {
       "id": 1,
-      "name": " pottery",
+      "name": "Ethiopian clay pottery",
       "image": "https://i.etsystatic.com/35617784/r/il/3cb5a4/3983996273/il_1588xN.3983996273_mgcj.jpg",
       "price": 5,
       "info": "Ethiopian clay pottery"
@@ -92,24 +92,6 @@
       "email": "yakoblema@gmail.com",
       "Telephone": 4022002002,
       "message": "Hi there"
-    },
-    {
-      "id": 9
-    },
-    {
-      "id": 10
-    },
-    {
-      "id": 11
-    },
-    {
-      "id": 12
-    },
-    {
-      "id": 13
-    },
-    {
-      "id": 14
     }
   ]
 }
