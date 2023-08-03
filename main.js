@@ -17,6 +17,9 @@ function displayNextImage() {
 
 displayNextImage();
 setInterval(displayNextImage, 3000);
+const quoteFormApiUrl = "https://reqres.in/api/users";
+
+const itemListApiUrl = "https://fakestoreapi.com/products";
 const getQuoteButton = document.getElementById("getQuoteButton");
 const quoteForm = document.getElementById("quoteForm");
 const quoteFormElement = document.getElementById("quoteFormElement");
@@ -35,8 +38,8 @@ quoteFormElement.addEventListener("submit", (event) => {
   // Get the form data using FormData
   const formData = new FormData(quoteFormElement);
 
-  // Make the POST request to the server
-  fetch("http://localhost:3000/posts", {
+  // Make the POST request to the server using the quoteFormApiUrl
+  fetch(quoteFormApiUrl, {
     method: "POST",
     body: formData, // Use the FormData object directly as the body
   })
@@ -59,6 +62,24 @@ quoteFormElement.addEventListener("submit", (event) => {
     });
 });
 
+// Fetch products and render them dynamically on page load
+fetchProducts().then((products) => {
+  renderProducts(products);
+});
+
+async function fetchProducts() {
+  try {
+    const response = await fetch(itemListApiUrl);
+    if (!response.ok) {
+      throw new Error("Failed to fetch products");
+    }
+    const products = await response.json();
+    return products;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
+}
 const menuIcon = document.getElementById("menuIcon");
 const menuList = document.getElementById("menuList");
 
