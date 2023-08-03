@@ -1,3 +1,6 @@
+const itemListApiUrl = "https://fakestoreapi.com/products";
+const searchButton = document.getElementById("searchButton");
+
 // Image slideshow
 const imageElement = document.getElementById("image");
 const images = [
@@ -17,49 +20,43 @@ function displayNextImage() {
 
 displayNextImage();
 setInterval(displayNextImage, 3000);
-const quoteFormApiUrl = "https://reqres.in/api/users";
 
-const itemListApiUrl = "https://fakestoreapi.com/products";
+// Show/hide the quote form
 const getQuoteButton = document.getElementById("getQuoteButton");
 const quoteForm = document.getElementById("quoteForm");
 const quoteFormElement = document.getElementById("quoteFormElement");
+
 getQuoteButton.addEventListener("click", () => {
-  if (quoteForm.style.display === "block") {
-    quoteForm.style.display = "none";
-  } else {
-    quoteForm.style.display = "block";
-    quoteFormElement.reset();
-  }
+  quoteForm.style.display =
+    quoteForm.style.display === "block" ? "none" : "block";
+  quoteFormElement.reset();
 });
 
 quoteFormElement.addEventListener("submit", (event) => {
   event.preventDefault();
-
-  // Get the form data using FormData
   const formData = new FormData(quoteFormElement);
-
-  // Make the POST request to the server using the quoteFormApiUrl
   fetch(quoteFormApiUrl, {
     method: "POST",
-    body: formData, // Use the FormData object directly as the body
+    body: formData,
   })
     .then((response) => response.json())
     .then((data) => {
-      // Handle the success response here
       console.log("Quote submitted successfully:", data);
-
-      // Display a success message to the user
       alert("Quote submitted successfully!");
-
-      // Clear the form after submission
       quoteFormElement.reset();
     })
     .catch((error) => {
-      // Handle any errors that occur during the fetch request
       console.error("Error:", error);
-
       alert("Error submitting quote. Please try again later.");
     });
+});
+
+// Toggle the menu list on small screens when the menu icon is clicked
+const menuIcon = document.getElementById("menuIcon");
+const menuList = document.getElementById("menuList");
+
+menuIcon.addEventListener("click", () => {
+  menuList.classList.toggle("show");
 });
 
 // Fetch products and render them dynamically on page load
@@ -67,47 +64,25 @@ fetchProducts().then((products) => {
   renderProducts(products);
 });
 
-async function fetchProducts() {
-  try {
-    const response = await fetch(itemListApiUrl);
-    if (!response.ok) {
-      throw new Error("Failed to fetch products");
-    }
-    const products = await response.json();
-    return products;
-  } catch (error) {
-    console.error("Error fetching products:", error);
-    return [];
-  }
-}
-const menuIcon = document.getElementById("menuIcon");
-const menuList = document.getElementById("menuList");
-
-// Toggle the menu list on small screens when the menu icon is clicked
-menuIcon.addEventListener("click", () => {
-  menuList.classList.toggle("show");
-});
-
-// Fetch products and render them dynamically
-fetchProducts();
-
-function fetchProducts() {
-  return fetch("http://localhost:3000/items")
-    .then((response) => response.json())
-    .catch((error) => {
-      console.error("Error fetching products:", error);
-    });
-}
-const searchButton = document.getElementById("searchButton");
 searchButton.addEventListener("click", () => {
   const searchQuery = document.getElementById("searchInput").value;
   filterProducts(searchQuery);
 });
+
+function fetchProducts() {
+  return fetch(itemListApiUrl)
+    .then((response) => response.json())
+    .catch((error) => {
+      console.error("Error fetching products:", error);
+      return [];
+    });
+}
+
 function filterProducts(searchQuery) {
   const searchResultsDiv = document.getElementById("searchResults");
   searchResultsDiv.innerHTML = ""; // Clear the search results before rendering new ones
 
-  // Fetch products from the server or use the existing data in products variable
+  // Fetch products from the server
   fetchProducts().then((products) => {
     const filteredProducts = products.filter((product) =>
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -153,17 +128,15 @@ function renderProducts(products) {
     itemsContainer.appendChild(itemElement);
   });
 }
-// Fetch products and render them dynamically on page load
-fetchProducts().then((products) => {
-  renderProducts(products);
-});
+
+// Star rating and review handling
 const starRating = document.getElementById("star-rating");
 const ratingText = document.getElementById("rating-text");
 const reviewForm = document.getElementById("review-form");
 const userReview = document.getElementById("user-review");
 
 let userReviews = [];
-// Function to handle mouseover event on stars
+
 function handleStarHover(event) {
   const stars = Array.from(starRating.children);
   const hoveredStarIndex = stars.indexOf(event.target);
@@ -175,7 +148,6 @@ function handleStarHover(event) {
   ratingText.textContent = `You're giving ${hoveredStarIndex + 1} star(s)!`;
 }
 
-// Function to reset the stars when the mouse leaves the star rating container
 function resetStars() {
   const stars = Array.from(starRating.children);
   stars.forEach((star) => {
@@ -186,7 +158,6 @@ function resetStars() {
   ratingText.textContent = "Hover over the stars to rate!";
 }
 
-// Function to handle form submission
 function handleSubmit(event) {
   event.preventDefault();
   const rating = document
@@ -200,12 +171,8 @@ function handleSubmit(event) {
   // Clear the form inputs and reset the star rating
   reviewForm.reset();
   resetStars();
-
-  // Display the user reviews on the page
-  displayUserReviews();
 }
 
-// Function to display the user reviews on the page
 function displayUserReviews() {
   userReview.innerHTML = ""; // Clear the existing reviews
 
@@ -221,7 +188,7 @@ function displayUserReviews() {
   });
 }
 
-// Attach event listeners
+// Attach event listeners for star rating and review handling
 starRating.addEventListener("mouseover", handleStarHover);
 starRating.addEventListener("mouseout", resetStars);
 reviewForm.addEventListener("submit", handleSubmit);
