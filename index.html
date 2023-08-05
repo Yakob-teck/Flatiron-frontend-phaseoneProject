@@ -17,6 +17,9 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="styles.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script defer src="main.js"></script>
   </head>
   <body>
@@ -46,13 +49,15 @@
 
     <div id="searchResults"></div>
 
-    <section id="itemDetails">
-      <!-- The item details will be displayed here -->
-    </section>
+    <section id="itemDetails"></section>
     <button id="getQuoteButton">Get Quote</button>
     <section id="quoteForm">
       <h2>Get a Quote</h2>
-      <form id="quoteFormElement" action="/sumit-quote" method="post">
+      <form
+        id="quoteFormElement"
+        action="https://formspree.io/f/meqbebqj"
+        method="post"
+      >
         <label for="Name">Name:</label>
         <input type="text" name="name" placeholder="Name" required />
 
@@ -155,7 +160,7 @@
       id="comment"
       placeholder="Write your review and comments here"
     ></textarea>
-    <button type="submit">Submit Review</button>
+    <button type="button" id="review-form-button">Submit Review</button>
   </form>
 
   <div id="user-review">

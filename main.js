@@ -1,7 +1,3 @@
-const itemListApiUrl = "https://fakestoreapi.com/products";
-const searchButton = document.getElementById("searchButton");
-
-// Image slideshow
 const imageElement = document.getElementById("image");
 const images = [
   "https://lh3.googleusercontent.com/p/AF1QipOALGeO5Yb8cUHWHztUMda_NEHum0URtUDjLu10=w768-h768-n-o-v1",
@@ -21,6 +17,14 @@ function displayNextImage() {
 displayNextImage();
 setInterval(displayNextImage, 3000);
 
+// Toggle the menu list on small screens when the menu icon is clicked
+const menuIcon = document.getElementById("menuIcon");
+const menuList = document.getElementById("menuList");
+
+menuIcon.addEventListener("click", () => {
+  menuList.classList.toggle("show");
+});
+
 // Show/hide the quote form
 const getQuoteButton = document.getElementById("getQuoteButton");
 const quoteForm = document.getElementById("quoteForm");
@@ -35,15 +39,21 @@ getQuoteButton.addEventListener("click", () => {
 quoteFormElement.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(quoteFormElement);
-  fetch(quoteFormApiUrl, {
-    method: "POST",
-    body: formData,
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Quote submitted successfully:", data);
+  const data = {};
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
+
+  // Replace "your_form_endpoint" with your Formspree form endpoint
+  const formEndpointURL = "https://formspree.io/f/meqbebqj";
+
+  axios
+    .post(formEndpointURL, data)
+    .then((response) => {
+      console.log("Quote submitted successfully:", response.data);
       alert("Quote submitted successfully!");
       quoteFormElement.reset();
+      quoteForm.style.display = "none"; // Hide the quote form after successful submission
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -51,25 +61,9 @@ quoteFormElement.addEventListener("submit", (event) => {
     });
 });
 
-// Toggle the menu list on small screens when the menu icon is clicked
-const menuIcon = document.getElementById("menuIcon");
-const menuList = document.getElementById("menuList");
-
-menuIcon.addEventListener("click", () => {
-  menuList.classList.toggle("show");
-});
-
 // Fetch products and render them dynamically on page load
-fetchProducts().then((products) => {
-  renderProducts(products);
-});
-
-searchButton.addEventListener("click", () => {
-  const searchQuery = document.getElementById("searchInput").value;
-  filterProducts(searchQuery);
-});
-
 function fetchProducts() {
+  const itemListApiUrl = "https://fakestoreapi.com/products";
   return fetch(itemListApiUrl)
     .then((response) => response.json())
     .catch((error) => {
@@ -79,28 +73,32 @@ function fetchProducts() {
 }
 
 function filterProducts(searchQuery) {
-  const searchResultsDiv = document.getElementById("searchResults");
-  searchResultsDiv.innerHTML = ""; // Clear the search results before rendering new ones
+  const imageGridContainer = document.querySelector(".image-grid");
+  const items = imageGridContainer.querySelectorAll(".items");
 
-  // Fetch products from the server
-  fetchProducts().then((products) => {
-    const filteredProducts = products.filter((product) =>
-      product.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    if (filteredProducts.length === 0) {
-      searchResultsDiv.innerHTML = "<p>No results found.</p>";
+  items.forEach((item) => {
+    const nameElement = item.querySelector(".product-name");
+    const priceElement = item.querySelector(".product-price");
+    const name = nameElement.textContent.toLowerCase();
+    const price = priceElement.textContent.toLowerCase();
+
+    if (
+      name.includes(searchQuery.toLowerCase()) ||
+      price.includes(searchQuery.toLowerCase())
+    ) {
+      item.style.display = "block";
     } else {
-      renderProducts(filteredProducts);
+      item.style.display = "none";
     }
   });
 }
 
 function renderProducts(products) {
-  const itemsContainer = document.getElementById("itemsContainer");
-  itemsContainer.innerHTML = "";
+  const imageGridContainer = document.querySelector(".section2");
+  imageGridContainer.innerHTML = ""; // Clear the container before rendering new images
 
   products.forEach((product) => {
-    const itemElement = document.createElement("section");
+    const itemElement = document.createElement("div");
     itemElement.className = "items";
 
     const imgElement = document.createElement("img");
@@ -108,24 +106,19 @@ function renderProducts(products) {
     imgElement.alt = product.name;
     imgElement.className = "product-image";
 
-    const nameElement = document.createElement("section");
-    nameElement.className = "name";
+    const nameElement = document.createElement("p");
     nameElement.textContent = product.name;
+    nameElement.className = "product-name";
 
-    const priceElement = document.createElement("section");
-    priceElement.className = "price";
+    const priceElement = document.createElement("p");
     priceElement.textContent = `$${product.price}`;
-
-    const infoElement = document.createElement("section");
-    infoElement.className = "info";
-    infoElement.textContent = product.info;
+    priceElement.className = "product-price";
 
     itemElement.appendChild(imgElement);
     itemElement.appendChild(nameElement);
-    itemElement.appendChild(infoElement);
     itemElement.appendChild(priceElement);
 
-    itemsContainer.appendChild(itemElement);
+    imageGridContainer.appendChild(itemElement);
   });
 }
 
@@ -141,11 +134,33 @@ function handleStarHover(event) {
   const stars = Array.from(starRating.children);
   const hoveredStarIndex = stars.indexOf(event.target);
   stars.forEach((star, index) => {
-    star.classList.toggle("active", index <= hoveredStarIndex);
+    if (index <= hoveredStarIndex) {
+      star.classList.add("active");
+    } else {
+      star.classList.remove("active");
+    }
   });
 
   // Update the rating text
-  ratingText.textContent = `You're giving ${hoveredStarIndex + 1} star(s)!`;
+  const activeStars = starRating.querySelectorAll(".star.active");
+  const rating = activeStars.length > 0 ? activeStars.length : 0;
+  ratingText.textContent = `You're giving ${rating} star(s)!`;
+}
+
+function handleStarClick(event) {
+  const clickedStarIndex = Array.from(starRating.children).indexOf(
+    event.target
+  );
+  const rating = clickedStarIndex + 1;
+  const comment = document.getElementById("comment").value;
+
+  // Add the user review to the userReviews array
+  userReviews.push({ rating: rating, comment: comment });
+
+  // Clear the form inputs and reset the star rating
+  reviewForm.reset();
+  resetStars();
+  displayUserReviews();
 }
 
 function resetStars() {
@@ -157,13 +172,17 @@ function resetStars() {
   // Reset the rating text
   ratingText.textContent = "Hover over the stars to rate!";
 }
-
 function handleSubmit(event) {
   event.preventDefault();
   const rating = document
     .querySelector(".star.active")
-    .getAttribute("data-rating");
+    ?.getAttribute("data-rating");
   const comment = document.getElementById("comment").value;
+
+  if (!rating) {
+    alert("Please select a star rating before submitting your review.");
+    return;
+  }
 
   // Add the user review to the userReviews array
   userReviews.push({ rating: rating, comment: comment });
@@ -171,6 +190,7 @@ function handleSubmit(event) {
   // Clear the form inputs and reset the star rating
   reviewForm.reset();
   resetStars();
+  displayUserReviews();
 }
 
 function displayUserReviews() {
@@ -191,4 +211,54 @@ function displayUserReviews() {
 // Attach event listeners for star rating and review handling
 starRating.addEventListener("mouseover", handleStarHover);
 starRating.addEventListener("mouseout", resetStars);
+starRating.addEventListener("click", handleStarClick); // Add the click event listener
 reviewForm.addEventListener("submit", handleSubmit);
+
+// Attach event listener for star clicks
+starRating.addEventListener("click", handleStarClick);
+
+// Attach event listener for form submission
+reviewForm.addEventListener("submit", handleSubmit);
+
+// ... Previous code ...
+
+// Add an event listener to the search button
+searchButton.addEventListener("click", () => {
+  const searchQuery = searchInput.value.trim(); // Trim whitespace from the input value
+
+  if (searchQuery === "") {
+    alert("Please enter a search query.");
+    return;
+  }
+
+  fetchProducts()
+    .then((products) => {
+      if (!Array.isArray(products) || products.length === 0) {
+        alert("No products found.");
+        return;
+      }
+
+      const filteredProducts = products.filter(
+        (product) =>
+          (product.name &&
+            product.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (product.price && product.price.toString().includes(searchQuery))
+      );
+
+      if (filteredProducts.length === 0) {
+        alert("No products found matching the search query.");
+        return;
+      }
+
+      renderProducts(filteredProducts);
+    })
+    .catch((error) => {
+      console.error("Error fetching products:", error);
+    });
+});
+
+// Fetch products and render them dynamically on page load
+fetchProducts().then((products) => {
+  renderProducts(products);
+});
+displayUserReviews();
