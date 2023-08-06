@@ -62,14 +62,15 @@ quoteFormElement.addEventListener("submit", (event) => {
 });
 
 // Fetch products and render them dynamically on page load
-function fetchProducts() {
+async function fetchProducts() {
   const itemListApiUrl = "https://fakestoreapi.com/products";
-  return fetch(itemListApiUrl)
-    .then((response) => response.json())
-    .catch((error) => {
-      console.error("Error fetching products:", error);
-      return [];
-    });
+  try {
+    const response = await axios.get(itemListApiUrl);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
 }
 
 function filterProducts(searchQuery) {
@@ -213,14 +214,6 @@ starRating.addEventListener("mouseover", handleStarHover);
 starRating.addEventListener("mouseout", resetStars);
 starRating.addEventListener("click", handleStarClick); // Add the click event listener
 reviewForm.addEventListener("submit", handleSubmit);
-
-// Attach event listener for star clicks
-starRating.addEventListener("click", handleStarClick);
-
-// Attach event listener for form submission
-reviewForm.addEventListener("submit", handleSubmit);
-
-// ... Previous code ...
 
 // Add an event listener to the search button
 searchButton.addEventListener("click", () => {

@@ -295,6 +295,7 @@ h2 {
 .section2 .container .items .info {
   padding-left: 10px;
   color: rgb(243, 168, 7);
+  text-align: end;
 }
 
 .section2 .container .items .img img {
